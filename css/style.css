@@ -69,16 +69,17 @@ main{padding:0 12px 20px;max-width:560px;margin:0 auto}
 .kur .ic{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:84px;height:84px;border-radius:22px;display:grid;place-items:center;box-shadow:0 0 0 1.5px var(--gold),0 0 20px rgba(245,184,0,.35);background:radial-gradient(circle,#2a2208,#0a0905)}
 .kur .ic svg.i{width:46px;height:46px}
 .bgdb{width:100%;display:block;opacity:.75;margin-top:-6px;border-radius:12px;-webkit-mask-image:linear-gradient(180deg,#000 50%,transparent);mask-image:linear-gradient(180deg,#000 50%,transparent)}
-/* nav */
-nav.bb{position:fixed;left:8px;right:8px;bottom:calc(6px + var(--sb));z-index:40;height:80px;border-radius:26px;background:linear-gradient(180deg,#15130e,#070706);box-shadow:0 0 0 1.5px rgba(245,184,0,.75),0 0 18px rgba(245,184,0,.3);display:flex;align-items:center;max-width:544px;margin:0 auto}
-nav.bb button{flex:1;background:none;border:0;color:#e9e6df;font-size:11.5px;font-weight:600;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;height:100%;cursor:pointer;position:relative;padding:0}
+/* nav: 2 + ortalanmış Program + 2; orta daire sol:50% + translateX(-50%) */
+nav.bb{--fab:76px;--slot:80px;position:fixed;left:8px;right:8px;bottom:calc(6px + var(--sb));z-index:40;height:80px;border-radius:26px;background:linear-gradient(180deg,#15130e,#070706);box-shadow:0 0 0 1.5px rgba(245,184,0,.75),0 0 18px rgba(245,184,0,.3);display:grid;grid-template-columns:1fr 1fr var(--slot) 1fr 1fr;align-items:center;max-width:544px;margin:0 auto}
+nav.bb button{background:none;border:0;color:#e9e6df;font-size:11.5px;font-weight:600;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;height:100%;cursor:pointer;position:relative;padding:0;min-width:0}
+nav.bb > button:nth-of-type(1){grid-column:1}nav.bb > button:nth-of-type(2){grid-column:2}nav.bb > button:nth-of-type(4){grid-column:4}nav.bb > button:nth-of-type(5){grid-column:5}
 nav.bb button svg.i{width:26px;height:26px;stroke:#e9e6df}
 nav.bb button .w{display:grid;place-items:center;width:52px;height:34px;border-radius:12px}
 nav.bb button.on{color:var(--gold)}nav.bb button.on svg.i{stroke:var(--gold)}
 nav.bb button.on .w{box-shadow:0 0 0 1.5px var(--gold),0 0 12px rgba(245,184,0,.4);background:rgba(245,184,0,.08)}
-nav.bb button.on::after{content:"";position:absolute;bottom:6px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
-nav.bb .ctr{flex:1.15}
-nav.bb .ctr .fab{width:76px;height:76px;margin-top:-44px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#ffe066,#f5b800 55%,#b98500);box-shadow:0 0 0 4px #000,0 0 0 6px rgba(245,184,0,.6),0 0 26px rgba(245,184,0,.65);display:grid;place-items:center}
+nav.bb button.on::after{content:"";position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:6px;height:6px;border-radius:50%;background:var(--gold)}
+nav.bb .ctr{position:absolute;left:50%;transform:translateX(-50%);width:var(--slot);z-index:1}
+nav.bb .ctr .fab{width:var(--fab);height:var(--fab);margin-top:-44px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#ffe066,#f5b800 55%,#b98500);box-shadow:0 0 0 4px #000,0 0 0 6px rgba(245,184,0,.6),0 0 26px rgba(245,184,0,.65);display:grid;place-items:center;flex:none}
 nav.bb .ctr .fab svg.i{stroke:#111;width:36px;height:36px;stroke-width:2.6}
 nav.bb .ctr.on::after{display:none}
 /* tabs */
@@ -240,11 +241,11 @@ body{padding-bottom:calc(90px + var(--sb))}
 .water{min-height:120px}.water .bt{width:66px}.water .v{font-size:25px}.water .v small{font-size:13px}
 .water .btn{min-height:40px;font-size:14px}
 .kur .big{font-size:22px}.kur .big small{font-size:13px}.kur .ic{width:70px;height:70px;border-radius:18px}.kur .ic svg.i{width:38px;height:38px}
-nav.bb{height:66px;border-radius:22px}
+nav.bb{--fab:64px;--slot:68px;height:66px;border-radius:22px}
 nav.bb button{font-size:10px;gap:3px;white-space:nowrap}
 nav.bb button .w{width:42px;height:30px;border-radius:10px}nav.bb button svg.i{width:22px;height:22px}
 nav.bb button.on::after{bottom:3px;width:5px;height:5px}
-nav.bb .ctr .fab{width:64px;height:64px;margin-top:-34px}nav.bb .ctr .fab svg.i{width:30px;height:30px}
+nav.bb .ctr .fab{margin-top:-34px}nav.bb .ctr .fab svg.i{width:30px;height:30px}
 #toast{bottom:calc(88px + var(--sb))}
 .tabs{gap:6px}.tabs button{flex:1 1 auto;min-height:40px;font-size:12px;padding:0 8px;gap:5px;border-radius:12px}.tabs button svg.i{width:16px;height:16px}
 .phero{min-height:136px;padding:12px}.phero h2{font-size:21px}.phero h2 svg.i{width:28px;height:28px}.phero .s{font-size:11.5px;margin:3px 0 10px}

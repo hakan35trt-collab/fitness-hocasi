@@ -280,9 +280,9 @@ function header() {
 function nav() {
   const cur = sub ? (sub === 'kur' || sub === 'health' || sub === 'supp' ? 'home' : sub === 'profile' ? 'settings' : tab) : tab;
   const it = (t, i, l) => `<button data-t="${t}" class="${cur === t ? 'on' : ''}"><span class="w">${ic(i)}</span>${l}</button>`;
-  return it('home', 'home', 'Ana Sayfa') + it('program', 'db', 'Program') +
-    `<button class="ctr" data-act="kayit" aria-label="Kayıt"><span class="fab">${ic(tab === 'home' && !sub ? 'shield' : 'plus')}</span>Kayıt</button>` +
-    it('food', 'food', 'Beslenme') + it('progress', 'bars', 'İlerleme') + it('settings', 'gear', 'Ayarlar');
+  return it('home', 'home', 'Ana Sayfa') + it('food', 'food', 'Beslenme') +
+    `<button class="ctr${cur === 'program' ? ' on' : ''}" data-t="program" aria-label="Program"><span class="fab">${ic('db')}</span>Program</button>` +
+    it('progress', 'bars', 'İlerleme') + it('settings', 'gear', 'Ayarlar');
 }
 function reminders() {
   const t = today(), p = planFor(t), k = kur(), out = [];
@@ -573,7 +573,7 @@ V.settings = () => {
 
 /* ----- Sayfalar dışı: çekmece, alt sayfa ----- */
 function openDrawer() {
-  $('#drawer').innerHTML = `<img src="${img('logo')}" alt="">` + [['home', 'home', 'Ana Sayfa'], ['program', 'db', 'Program'], ['food', 'food', 'Beslenme'], ['progress', 'bars', 'İlerleme'], ['s:supp', 'pill', 'Takviyeler'], ['s:kur', 'kur', 'Kür Takibi'], ['s:health', 'heart', 'Sağlık'], ['settings', 'gear', 'Ayarlar']]
+  $('#drawer').innerHTML = `<img src="${img('logo')}" alt="">` + [['home', 'home', 'Ana Sayfa'], ['program', 'db', 'Program'], ['kayit', 'plus', 'Kayıt'], ['food', 'food', 'Beslenme'], ['progress', 'bars', 'İlerleme'], ['s:supp', 'pill', 'Takviyeler'], ['s:kur', 'kur', 'Kür Takibi'], ['s:health', 'heart', 'Sağlık'], ['settings', 'gear', 'Ayarlar']]
     .map(x => `<button data-dr="${x[0]}">${ic(x[1])}${x[2]}</button>`).join('');
   $('#drawer').classList.add('on'); $('#scrim').classList.add('on');
 }
@@ -611,8 +611,8 @@ function go(t) { tab = t; sub = null; openEx = null; closeAll(); render(); windo
 function goSub(s) { sub = s; closeAll(); render(); window.scrollTo(0, 0); }
 $('#vClose').onclick = () => $('#viewer').classList.remove('on');
 $('#scrim').onclick = closeAll;
-$('#nav').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; if (b.dataset.act === 'kayit') return kayitSheet(); go(b.dataset.t); });
-$('#drawer').addEventListener('click', e => { const b = e.target.closest('[data-dr]'); if (!b) return; const v = b.dataset.dr; v.startsWith('s:') ? goSub(v.slice(2)) : go(v); });
+$('#nav').addEventListener('click', e => { const b = e.target.closest('button'); if (!b || !b.dataset.t) return; go(b.dataset.t); });
+$('#drawer').addEventListener('click', e => { const b = e.target.closest('[data-dr]'); if (!b) return; const v = b.dataset.dr; if (v === 'kayit') { closeAll(); return kayitSheet(); } v.startsWith('s:') ? goSub(v.slice(2)) : go(v); });
 $('#sheet').addEventListener('click', e => {
   const b = e.target.closest('[data-sh]'); if (!b) return; const a = b.dataset.sh;
   if (a === 'close') return closeAll();

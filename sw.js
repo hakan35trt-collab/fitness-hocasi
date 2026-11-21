@@ -1,5 +1,5 @@
 // Sürüm yükseltirken bu değeri VE version.json dosyasını değiştir.
-const VERSION = '2.0.0';
+const VERSION = '2.0.1';
 const CACHE = 'fitness-hocasi-' + VERSION;
 const ASSETS = [
   './',
