@@ -3,30 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#07070a">
+<meta name="theme-color" content="#000000">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Fitness Hocası">
+<meta name="application-name" content="Fitness Hocası">
+<meta name="description" content="Antrenman • Beslenme • Takip">
 <title>Fitness Hocası</title>
 <link rel="manifest" href="./manifest.webmanifest">
-<link rel="icon" type="image/png" href="./icon-192.png">
-<link rel="apple-touch-icon" href="./icon-192.png">
-<link rel="stylesheet" href="./style.css">
+<link rel="icon" href="./favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+<link rel="stylesheet" href="./css/style.css?v=2.0.0">
 </head>
 <body>
-<div id="upd"><span>Yeni sürüm var —</span><button class="btn sm" id="updBtn">Güncelle</button></div>
-<header class="top"><button class="back" id="backBtn" hidden>‹ Geri</button><h1 id="ttl">Fitness <b>Hocası</b></h1><span id="todayLbl" class="mut"></span></header>
+<div id="splash"><img src="./img/logo.webp" alt="Fitness Hocası"></div>
+<header id="hdr"></header>
 <main id="view"></main>
-<nav class="bb" id="nav">
-<button data-t="home"><span>🏠</span>Ana Sayfa</button>
-<button data-t="program"><span>🏋️</span>Program</button>
-<button data-t="food"><span>🥗</span>Beslenme</button>
-<button data-t="progress"><span>📈</span>İlerleme</button>
-<button data-t="settings"><span>⚙️</span>Ayarlar</button>
-</nav>
-<div id="viewer"><button class="btn red sm" id="vClose">✕ Kapat</button><img id="vImg" alt=""></div>
+<nav class="bb" id="nav"></nav>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer"></aside>
+<section class="sheet" id="sheet"></section>
+<div id="viewer"><button class="btn gold sm" id="vClose">✕ Kapat</button><img id="vImg" alt=""></div>
 <div id="toast"></div>
-<script src="./app.js"></script>
+<script src="./js/app.js?v=2.0.0"></script>
 </body>
 </html>
